@@ -25,10 +25,7 @@ async def on_message(message):
             channel = client.get_channel(int(748501274944602214))
             await channel.send(file=discord.File('/home/ubuntu/python/catbot/pics/cat1.jpg'))
 
-    if "katt" in message.content.lower():
-        await catLoad(message)
-
-    if "cat" in message.content.lower():
+    if "katt" or "cat" or "pussy" in message.content.lower():
         await catLoad(message)
 
 with open ("/home/ubuntu/python/catbot/token.txt", "r") as myfile:

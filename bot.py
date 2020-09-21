@@ -28,7 +28,7 @@ async def on_message(message):
     if "cat" in message.content.lower():
         await catLoad(message)
 
-    if "katt" in message.content.lower():
+    if "katt" in message.content.lower() or "kat" in message.content.lower():
         await catLoad(message)
 
     if "pussy" in message.content.lower():

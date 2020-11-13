@@ -25,7 +25,7 @@ async def on_message(message):
             channel = client.get_channel(int(748501274944602214))
             await channel.send(file=discord.File('/home/ubuntu/python/catbot/pics/cat1.jpg'))
 
-    if any(word in message.content.lower() for word in ["cat", "katt", "kat", "pussy", "neko"]):
+    if any(word in message.content.lower() for word in ["cat", "katt", "kat", "pussy", "neko", "macë", "kitte", "katu", "catua", "kotka", "Maow", "gat", "eesa", "miu", "mau", "bushi", "kocka", "kat", "poes", "miw", "pussi", "kato", "kass", "kiisu", "domadh", "gorbe", "cat", "pusa", "kissa", "chat", "gnari", "pishyakan", "Piscín", "cait", "kattikatze", "ket", "gata", "gati", "biladi", "muca", "popoki", "cha'tool", "billi", "cicamacska", "kottur", "kuching", "kutjing", "gatto", "bekku", "chma", "cattus", "felis", "katinas", "poocha", "kucing", "qattus", "miss", "miz", "fula", "shimii", "minoos", "gato", "pisica", "giat", "koshka", "kot", "marjara", "macka", "mačka", "paka", "büsi", "chatz", "poonai", "meo", "kedi", "kitska", "kit", "mèo", "cath", "kats", "Ikati"]):
         await catLoad(message)
 
 with open ("/home/ubuntu/python/catbot/token.txt", "r") as myfile:

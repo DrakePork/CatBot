@@ -72,7 +72,7 @@ async def on_message(message):
             await msg.channel.send(file=discord.File(folder + '/' + random.choice(animal)))
         else:
             channel = client.get_channel(int(748501274944602214))
-            await channel.send(file=discord.File('/home/ubuntu/python/catbot/pics/cat1.jpg'))
+            await channel.send(file=discord.File('/home/ubuntu/python/catbot/catpics/cat1.jpg'))
 
     if any(word in message.content.lower() for word in
            ["cat", "katt", "kat", "pussy", "neko", "macë", "kitte", "katu", "catua", "kotka", "maow", "gat", "eesa",

@@ -85,14 +85,7 @@ async def on_message(message):
         await picLoad(message, "cat")
     elif "panda" in message.content.lower():
         await picLoad(message, "panda")
-    elif "whaam" in message.content.lower():
-        import requests
-        response = requests.get("https://api.thecatapi.com/v1/images/search")
-        json_data = response.json()
-        catUrl = json_data[0]["url"]
-        embed = discord.Embed(title="Cat")
-        embed.set_image(url=catUrl)
-        await message.channel.send(embed=embed)
+
 
 
 with open("/home/ubuntu/python/catbot/token.txt", "r") as myfile:

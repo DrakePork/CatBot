@@ -27,7 +27,6 @@ async def cat_pic(ctx):
 
 @slash.slash(name="randocat", description="Cat Command 2.0")
 async def randocat_pic(ctx):
-    import json
     import requests
 
     response = requests.get("https://api.thecatapi.com/v1/images/search")
@@ -85,6 +84,12 @@ async def on_message(message):
         await picLoad(message, "cat")
     elif "panda" in message.content.lower():
         await picLoad(message, "panda")
+    elif "whaam" in message.content.lower():
+        import requests
+        response = requests.get("https://api.thecatapi.com/v1/images/search")
+        # response.headers["x-api-key"] = "adb1f5c4-5871-4143-b810-822080facd7d"
+        json_data = response.json()
+        await message.channel.send(json_data)
 
 
 with open("/home/ubuntu/python/catbot/token.txt", "r") as myfile:

@@ -38,25 +38,30 @@ async def panda_pic(ctx):
     await ctx.send(file=file, embed=embed)
 
 
-async def picLoad(aniType, ctx):
-    from os import listdir
-    from os.path import isfile, join
-    if aniType is "redpanda":
-        folder = "/home/ubuntu/python/catbot/redpandapics"
-    elif aniType is "cat":
-        folder = "/home/ubuntu/python/catbot/catpics"
-    animals = [f for f in listdir(folder) if isfile(join(folder, f))]
-    animal = random.choice(animals)
-    file = discord.File(folder + '/' + animal, filename=animal)
-    embed = discord.Embed(title=aniType)
-    embed.set_image(url="attachment://" + animal)
-    await ctx.send(file=file, embed=embed)
-
-
 @client.event
 async def on_message(message):
     if message.author == client.user:
         return
+
+    guild = message.guild.id
+
+    async def picLoad(msg, aniType):
+        if guild != 284063993155551232:
+            from os import listdir
+            from os.path import isfile, join
+            if aniType is "panda":
+                folder = "/home/ubuntu/python/catbot/redpandapics"
+            elif aniType is "cat":
+                folder = "/home/ubuntu/python/catbot/catpics"
+            animals = [f for f in listdir(folder) if isfile(join(folder, f))]
+            animal = random.choice(animals)
+            file = discord.File(folder + '/' + animal, filename=animal)
+            embed = discord.Embed(title=aniType)
+            embed.set_image(url="attachment://" + animal)
+            await msg.channel.send(file=file, embed=embed)
+        else:
+            channel = client.get_channel(int(748501274944602214))
+            await channel.send(file=discord.File('/home/ubuntu/python/catbot/catpics/cat1.jpg'))
 
     if any(word in message.content.lower() for word in
            ["cat", "katt", "kat", "pussy", "neko", "macë", "kitte", "katu", "catua", "kotka", "maow", "gat", "eesa",

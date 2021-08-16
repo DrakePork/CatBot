@@ -68,8 +68,12 @@ async def on_message(message):
                 folder = "/home/ubuntu/python/catbot/redpandapics"
             elif type is "cat":
                 folder = "/home/ubuntu/python/catbot/catpics"
-            animal = [f for f in listdir(folder) if isfile(join(folder, f))]
-            await msg.channel.send(file=discord.File(folder + '/' + random.choice(animal)))
+            animals = [f for f in listdir(folder) if isfile(join(folder, f))]
+            animal = random.choice(animals)
+            file = discord.File(folder + '/' + animal, filename=animal)
+            embed = discord.Embed()
+            embed.set_image(url="attachment://" + animal)
+            await msg.channel.send(file=file, embed=embed)
         else:
             channel = client.get_channel(int(748501274944602214))
             await channel.send(file=discord.File('/home/ubuntu/python/catbot/catpics/cat1.jpg'))

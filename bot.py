@@ -18,7 +18,7 @@ async def cat_pic(ctx):
 
 
 @slash.slash(name="redpanda", description="Shows red panda")
-async def cat_pic(ctx):
+async def panda_pic(ctx):
     await picLoad("redpanda", ctx)
 
 

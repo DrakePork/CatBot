@@ -22,7 +22,7 @@ async def cat_pic(ctx):
     file = discord.File(folder + '/' + animal, filename=animal)
     embed = discord.Embed()
     embed.set_image(url="attachment://" + animal)
-    await ctx.channel.send(file=file, embed=embed)
+    await ctx.send(file=file, embed=embed)
 
 
 @slash.slash(name="redpanda", description="Shows red panda")
@@ -35,7 +35,7 @@ async def panda_pic(ctx):
     file = discord.File(folder + '/' + animal, filename=animal)
     embed = discord.Embed()
     embed.set_image(url="attachment://" + animal)
-    await ctx.channel.send(file=file, embed=embed)
+    await ctx.send(file=file, embed=embed)
 
 
 async def picLoad(aniType, ctx):
@@ -50,7 +50,7 @@ async def picLoad(aniType, ctx):
     file = discord.File(folder + '/' + animal, filename=animal)
     embed = discord.Embed()
     embed.set_image(url="attachment://" + animal)
-    await ctx.channel.send(file=file, embed=embed)
+    await ctx.send(file=file, embed=embed)
 
 
 @client.event

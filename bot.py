@@ -14,7 +14,11 @@ async def on_ready():
 
 @slash.slash(name="cat", description="Shows cat")
 async def cat_pic(ctx):
-    await picLoad("cat", ctx)
+    from os import listdir
+    from os.path import isfile, join
+    folder = "/home/ubuntu/python/catbot/catpics"
+    animal = [f for f in listdir(folder) if isfile(join(folder, f))]
+    await ctx.channel.send(file=discord.File(folder + '/' + random.choice(animal)))
 
 
 @slash.slash(name="redpanda", description="Shows red panda")

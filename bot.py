@@ -22,17 +22,18 @@ async def cat_pic(ctx):
     file = discord.File(folder + '/' + animal, filename=animal)
     embed = discord.Embed(title="Cat")
     embed.set_image(url="attachment://" + animal)
-    await ctx.send(file=file, embed=embed)
+    await ctx.send(embed=embed)
 
 
 @slash.slash(name="randocat", description="Cat Command 2.0")
 async def randocat_pic(ctx):
     import requests
-
     response = requests.get("https://api.thecatapi.com/v1/images/search")
-    # response.headers["x-api-key"] = "adb1f5c4-5871-4143-b810-822080facd7d"
     json_data = response.json()
-    await ctx.send(json_data)
+    catUrl = json_data[0]["url"]
+    embed = discord.Embed(title="Cat")
+    embed.set_image(url=catUrl)
+    await ctx.send(embed=embed)
 
 
 @slash.slash(name="redpanda", description="Shows red panda")
@@ -45,7 +46,7 @@ async def panda_pic(ctx):
     file = discord.File(folder + '/' + animal, filename=animal)
     embed = discord.Embed(title="Red Panda")
     embed.set_image(url="attachment://" + animal)
-    await ctx.send(file=file, embed=embed)
+    await ctx.send(embed=embed)
 
 
 @client.event
@@ -68,7 +69,7 @@ async def on_message(message):
             file = discord.File(folder + '/' + animal, filename=animal)
             embed = discord.Embed(title=aniType)
             embed.set_image(url="attachment://" + animal)
-            await msg.channel.send(file=file, embed=embed)
+            await msg.channel.send(embed=embed)
         else:
             channel = client.get_channel(int(748501274944602214))
             await channel.send(file=discord.File('/home/ubuntu/python/catbot/catpics/cat1.jpg'))
@@ -87,9 +88,11 @@ async def on_message(message):
     elif "whaam" in message.content.lower():
         import requests
         response = requests.get("https://api.thecatapi.com/v1/images/search")
-        # response.headers["x-api-key"] = "adb1f5c4-5871-4143-b810-822080facd7d"
         json_data = response.json()
-        await message.channel.send(json_data[0]["url"])
+        catUrl = json_data[0]["url"]
+        embed = discord.Embed(title="Cat")
+        embed.set_image(url=catUrl)
+        await message.channel.send(embed=embed)
 
 
 with open("/home/ubuntu/python/catbot/token.txt", "r") as myfile:

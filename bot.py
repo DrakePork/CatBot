@@ -85,13 +85,11 @@ async def on_message(message):
     elif "panda" in message.content.lower():
         await picLoad(message, "panda")
     elif "whaam" in message.content.lower():
-        import json
         import requests
         response = requests.get("https://api.thecatapi.com/v1/images/search")
         # response.headers["x-api-key"] = "adb1f5c4-5871-4143-b810-822080facd7d"
         json_data = response.json()
-        test = json.loads(json_data)
-        await message.channel.send(test[0].url)
+        await message.channel.send(json_data[0].keys())
 
 
 with open("/home/ubuntu/python/catbot/token.txt", "r") as myfile:

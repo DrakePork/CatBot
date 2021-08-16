@@ -25,6 +25,17 @@ async def cat_pic(ctx):
     await ctx.send(file=file, embed=embed)
 
 
+@slash.slash(name="randocat", description="Cat Command 2.0")
+async def randocat_pic(ctx):
+    import json
+    import requests
+
+    response = requests.get("https://api.thecatapi.com/v1/images/search")
+    # response.headers["x-api-key"] = "adb1f5c4-5871-4143-b810-822080facd7d"
+    json_data = response.json()
+    await ctx.send(json_data)
+
+
 @slash.slash(name="redpanda", description="Shows red panda")
 async def panda_pic(ctx):
     from os import listdir

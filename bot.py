@@ -89,7 +89,7 @@ async def on_message(message):
         response = requests.get("https://api.thecatapi.com/v1/images/search")
         # response.headers["x-api-key"] = "adb1f5c4-5871-4143-b810-822080facd7d"
         json_data = response.json()
-        await message.channel.send(json_data)
+        await message.channel.send(json_data[0].url)
 
 
 with open("/home/ubuntu/python/catbot/token.txt", "r") as myfile:

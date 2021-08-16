@@ -17,13 +17,25 @@ async def cat_pic(ctx):
     from os import listdir
     from os.path import isfile, join
     folder = "/home/ubuntu/python/catbot/catpics"
-    animal = [f for f in listdir(folder) if isfile(join(folder, f))]
-    await ctx.channel.send(file=discord.File(folder + '/' + random.choice(animal)))
+    animals = [f for f in listdir(folder) if isfile(join(folder, f))]
+    animal = random.choice(animals)
+    file = discord.File(folder + '/' + animal, filename=animal)
+    embed = discord.Embed()
+    embed.set_image(url="attachment://" + animal)
+    await ctx.channel.send(file=file, embed=embed)
 
 
 @slash.slash(name="redpanda", description="Shows red panda")
 async def panda_pic(ctx):
-    await picLoad("redpanda", ctx)
+    from os import listdir
+    from os.path import isfile, join
+    folder = "/home/ubuntu/python/catbot/redpandapics"
+    animals = [f for f in listdir(folder) if isfile(join(folder, f))]
+    animal = random.choice(animals)
+    file = discord.File(folder + '/' + animal, filename=animal)
+    embed = discord.Embed()
+    embed.set_image(url="attachment://" + animal)
+    await ctx.channel.send(file=file, embed=embed)
 
 
 async def picLoad(aniType, ctx):
@@ -33,8 +45,12 @@ async def picLoad(aniType, ctx):
         folder = "/home/ubuntu/python/catbot/redpandapics"
     elif aniType is "cat":
         folder = "/home/ubuntu/python/catbot/catpics"
-    animal = [f for f in listdir(folder) if isfile(join(folder, f))]
-    await ctx.channel.send(file=discord.File(folder + '/' + random.choice(animal)))
+    animals = [f for f in listdir(folder) if isfile(join(folder, f))]
+    animal = random.choice(animals)
+    file = discord.File(folder + '/' + animal, filename=animal)
+    embed = discord.Embed()
+    embed.set_image(url="attachment://" + animal)
+    await ctx.channel.send(file=file, embed=embed)
 
 
 @client.event

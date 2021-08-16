@@ -22,7 +22,7 @@ async def cat_pic(ctx):
     file = discord.File(folder + '/' + animal, filename=animal)
     embed = discord.Embed(title="Cat")
     embed.set_image(url="attachment://" + animal)
-    await ctx.send(embed=embed)
+    await ctx.send(file=file, embed=embed)
 
 
 @slash.slash(name="randocat", description="Cat Command 2.0")
@@ -46,7 +46,7 @@ async def panda_pic(ctx):
     file = discord.File(folder + '/' + animal, filename=animal)
     embed = discord.Embed(title="Red Panda")
     embed.set_image(url="attachment://" + animal)
-    await ctx.send(embed=embed)
+    await ctx.send(file=file, embed=embed)
 
 
 @client.event
@@ -69,7 +69,7 @@ async def on_message(message):
             file = discord.File(folder + '/' + animal, filename=animal)
             embed = discord.Embed(title=aniType)
             embed.set_image(url="attachment://" + animal)
-            await msg.channel.send(embed=embed)
+            await msg.channel.send(file=file, embed=embed)
         else:
             channel = client.get_channel(int(748501274944602214))
             await channel.send(file=discord.File('/home/ubuntu/python/catbot/catpics/cat1.jpg'))

@@ -16,11 +16,24 @@ async def on_ready():
 async def cat_pic(ctx):
     from os import listdir
     from os.path import isfile, join
-    folder = "/home/ubuntu/python/catbot/catpics"
+    folder = "/home/ubuntu/python/catbot/cat"
     animals = [f for f in listdir(folder) if isfile(join(folder, f))]
     animal = random.choice(animals)
     file = discord.File(folder + '/' + animal, filename=animal)
     embed = discord.Embed(title="Cat")
+    embed.set_image(url="attachment://" + animal)
+    await ctx.send(file=file, embed=embed)
+
+
+@slash.slash(name="polarbear", description="Shows polarbear")
+async def polarbear_pic(ctx):
+    from os import listdir
+    from os.path import isfile, join
+    folder = "/home/ubuntu/python/catbot/polarbear"
+    animals = [f for f in listdir(folder) if isfile(join(folder, f))]
+    animal = random.choice(animals)
+    file = discord.File(folder + '/' + animal, filename=animal)
+    embed = discord.Embed(title="Polar Bear")
     embed.set_image(url="attachment://" + animal)
     await ctx.send(file=file, embed=embed)
 
@@ -40,7 +53,7 @@ async def randocat_pic(ctx):
 async def panda_pic(ctx):
     from os import listdir
     from os.path import isfile, join
-    folder = "/home/ubuntu/python/catbot/redpandapics"
+    folder = "/home/ubuntu/python/catbot/redpanda"
     animals = [f for f in listdir(folder) if isfile(join(folder, f))]
     animal = random.choice(animals)
     file = discord.File(folder + '/' + animal, filename=animal)
@@ -60,10 +73,7 @@ async def on_message(message):
         if guild != 284063993155551232:
             from os import listdir
             from os.path import isfile, join
-            if aniType is "panda":
-                folder = "/home/ubuntu/python/catbot/redpandapics"
-            elif aniType is "cat":
-                folder = "/home/ubuntu/python/catbot/catpics"
+            folder = "/home/ubuntu/python/catbot/" + aniType
             animals = [f for f in listdir(folder) if isfile(join(folder, f))]
             animal = random.choice(animals)
             file = discord.File(folder + '/' + animal, filename=animal)
@@ -72,10 +82,10 @@ async def on_message(message):
             await msg.channel.send(file=file, embed=embed)
         else:
             channel = client.get_channel(int(748501274944602214))
-            await channel.send(file=discord.File('/home/ubuntu/python/catbot/catpics/cat1.jpg'))
+            await channel.send(file=discord.File('/home/ubuntu/python/catbot/cat/cat1.jpg'))
 
     if any(word in message.content.lower() for word in
-           ["cat", "katt", "kat", "pussy", "neko", "macë", "kitte", "katu", "catua", "kotka", "maow", "gat", "eesa",
+           ["cat", "china", "katt", "kat", "pussy", "neko", "macë", "kitte", "katu", "catua", "kotka", "maow", "gat", "eesa",
             "miu", "mau", "bushi", "kocka", "kat", "poes", "miw", "pussi", "kato", "kass", "kiisu", "domadh", "gorbe",
             "cat", "pusa", "kissa", "chat", "gnari", "pishyakan", "piscín", "cait", "kattikatze", "ket", "gata", "gati",
             "biladi", "muca", "popoki", "cha'tool", "billi", "cicamacska", "kottur", "kuching", "kutjing", "gatto",
@@ -84,8 +94,11 @@ async def on_message(message):
             "chatz", "poonai", "meo", "kedi", "kitska", "kit", "mèo", "cath", "kats", "ikati"]):
         await picLoad(message, "cat")
     elif "panda" in message.content.lower():
-        await picLoad(message, "panda")
-
+        await picLoad(message, "redpanda")
+    elif "polarbear" in message.content.lower():
+        await picLoad(message, "polarbear")
+    elif "polar" in message.content.lower() and "bear" in message.content.lower():
+        await picLoad(message, "polarbear")
 
 
 with open("/home/ubuntu/python/catbot/token.txt", "r") as myfile:

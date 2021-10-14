@@ -65,7 +65,7 @@ async def panda_pic(ctx):
 
 @client.event
 async def on_message(message):
-    if message.author == client.user or not message.author.bot:
+    if message.author == client.user or message.author.bot:
         return
 
     guild = message.guild.id

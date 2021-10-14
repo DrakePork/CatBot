@@ -65,7 +65,7 @@ async def panda_pic(ctx):
 
 @client.event
 async def on_message(message):
-    if message.author == client.user and not message.author.bot:
+    if message.author == client.user or not message.author.bot:
         return
 
     guild = message.guild.id
@@ -86,7 +86,7 @@ async def on_message(message):
             await channel.send(file=discord.File('/home/ubuntu/python/catbot/cat/cat1.jpg'))
 
     if any(word in message.content.lower() for word in
-           ["cat", "china", "katt", "kat", "pussy", "neko", "macë", "kitte", "katu", "catua", "kotka", "maow", "gat", "eesa",
+           ["cat", "katt", "kat", "pussy", "neko", "macë", "kitte", "katu", "catua", "kotka", "maow", "gat", "eesa",
             "miu", "mau", "bushi", "kocka", "kat", "poes", "miw", "pussi", "kato", "kass", "kiisu", "domadh", "gorbe",
             "cat", "pusa", "kissa", "chat", "gnari", "pishyakan", "piscín", "cait", "kattikatze", "ket", "gata", "gati",
             "biladi", "muca", "popoki", "cha'tool", "billi", "cicamacska", "kottur", "kuching", "kutjing", "gatto",

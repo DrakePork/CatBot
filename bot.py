@@ -26,6 +26,19 @@ async def cat_pic(ctx):
     await ctx.send(file=file, embed=embed)
 
 
+# @slash.slash(name="dog", description="Shows dog")
+# async def polarbear_pic(ctx):
+#    from os import listdir
+#    from os.path import isfile, join
+#    folder = "/home/ubuntu/python/catbot/dog"
+#    animals = [f for f in listdir(folder) if isfile(join(folder, f))]
+#    animal = random.choice(animals)
+#    file = discord.File(folder + '/' + animal, filename=animal)
+#    embed = discord.Embed(title="Dog")
+#    embed.set_image(url="attachment://" + animal)
+#    await ctx.send(file=file, embed=embed)
+
+
 @slash.slash(name="polarbear", description="Shows polarbear")
 async def polarbear_pic(ctx):
     from os import listdir
@@ -67,7 +80,8 @@ async def panda_pic(ctx):
 async def on_message(message):
     if message.author == client.user or message.author.bot:
         return
-
+    if message.author.id == 179024507657256960:
+        message.add_reaction(":confusion:")
     guild = message.guild.id
 
     async def picLoad(msg, aniType):

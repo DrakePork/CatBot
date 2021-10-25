@@ -82,7 +82,7 @@ async def on_message(message):
         return
 
     if message.author.id == 234658924035440640:
-        emoji = client.get_emoji(902325643092557864)
+        emoji = client.get_emoji(834061442175991828)
         await message.channel.send(emoji)
         #await message.add_reaction(emoji)
     guild = message.guild.id

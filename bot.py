@@ -80,7 +80,7 @@ async def panda_pic(ctx):
 async def on_message(message):
     if message.author == client.user or message.author.bot:
         return
-    await message.channel.send("wham" + message.author.id)
+    await message.channel.send(message.author.id)
     guild = message.guild.id
 
     async def picLoad(msg, aniType):

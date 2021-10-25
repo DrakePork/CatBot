@@ -80,8 +80,9 @@ async def panda_pic(ctx):
 async def on_message(message):
     if message.author == client.user or message.author.bot:
         return
-    if message.author.id == 179024507657256960:
+    if message.author.id == 902323272358699008:
         emoji = client.get_emoji(310177266011340803)
+        await message.channel.send("wham" + message.author.id)
         await message.add_reaction(emoji)
     guild = message.guild.id
 

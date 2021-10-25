@@ -81,7 +81,7 @@ async def on_message(message):
     if message.author == client.user or message.author.bot:
         return
 
-    if message.author.id == 259209721469337600:
+    if message.author.id == 234658924035440640:
         await message.channel.send("wham")
     guild = message.guild.id
 
